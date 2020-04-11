@@ -12,4 +12,7 @@ public class DbResponseConstants {
 
     static final Integer DB_CLOSED = -1;
     static final Integer DB_OPEN = 1;
+
+    public static final String URL = "java://my.db";
+    public static final String password = "jiny123";
 }

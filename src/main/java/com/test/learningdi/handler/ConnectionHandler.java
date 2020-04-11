@@ -8,13 +8,17 @@ import com.test.learningdi.db.DbApi;
 public class ConnectionHandler {
 
     private DbApi dbApiInstance;
+    private DbAuthentication dbAuthentication;
 
-    public ConnectionHandler(){
+    public ConnectionHandler(DbAuthentication dbAuthentication){
+        this.dbAuthentication = dbAuthentication;
         this.dbApiInstance = new DbApi();
     }
 
     public void openConnectionGracefully(){
-        this.dbApiInstance.open();
+        if(this.dbAuthentication.isSuccess()) {
+            this.dbApiInstance.open();
+        }
     }
 
     public void closeConnectionGracefully(){

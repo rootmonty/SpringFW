@@ -2,8 +2,10 @@ package com.test.learningdi.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.learningdi.data.EmployeeRepository;
 import com.test.learningdi.db.DbApi;
 import com.test.learningdi.handler.ConnectionHandler;
+import com.test.learningdi.handler.DbAuthentication;
 import com.test.learningdi.model.Employee;
 import org.springframework.data.repository.core.CrudMethods;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,11 @@ public class EmployeeController implements CrudInterface {
     private DbApi dbInstance;
     private ObjectMapper objectMapper;
     private ConnectionHandler connectionHandler;
+    private EmployeeRepository employeeRepository;
 
-    public EmployeeController(){
-        connectionHandler = new ConnectionHandler();
+    public EmployeeController(EmployeeRepository employeeRepository, DbAuthentication dbAuthentication){
+        this.employeeRepository = employeeRepository;
+        connectionHandler = new ConnectionHandler(dbAuthentication);
         this.dbInstance = connectionHandler.getDbApiInstance();
         objectMapper = new ObjectMapper();
     }
