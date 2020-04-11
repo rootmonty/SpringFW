@@ -15,4 +15,8 @@ public interface DbCallbacks {
     int delete(Employee object);
     Employee get(int id);
 
+    int clear();
+    int close();
+    int open();
+
 }

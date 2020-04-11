@@ -9,4 +9,7 @@ public class DbResponseConstants {
     static final Integer READ_SUCCESS = 5;
     static final Integer DEFAULT = 0;
     static final Integer FAILED = -1;
+
+    static final Integer DB_CLOSED = -1;
+    static final Integer DB_OPEN = 1;
 }
